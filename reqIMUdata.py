@@ -52,7 +52,7 @@ print('reqIMUdata Server started on 0.0.0.0:8090')
 while(True):
 
     rcvMsg, client_address = socket.recvfrom(64)
-    print('msg rcvd')
+    #print('msg rcvd')
     rcvData = unpack('i', rcvMsg)
 
     #Read the accelerometer,gyroscope and magnetometer values
