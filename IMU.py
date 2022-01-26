@@ -201,16 +201,19 @@ class IMU:
         #writeByte(LSM6DSL_ADDRESS,LSM6DSL_CTRL8_XL,0b11001000)           #Low pass filter enabled, BW9, composite filter
         #(LSM6DSL_ADDRESS,LSM6DSL_CTRL3_C,0b01000100)                     #Enable Block Data update, increment during multi byte read
 
-        self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL1_XL,0b10011111)           #ODR 3.33 kHz, +/- 8g , BW = 400hz
+        #elf._write_u8(self._sensors.GYRO,LSM6DSL_CTRL1_XL,0b10011111)           #ODR 3.33 kHz, +/- 8g , BW = 400hz
+        self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL1_XL,0b10010011)           #ODR 3.33 kHz, +/- 2g , BW = 400hz
         self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL8_XL,0b11001000)           #Low pass filter enabled, BW9, composite filter
         self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL3_C,0b01000100)            #Enable Block Data update, increment during multi byte read
 
         #initialise the gyroscope
-        self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL2_G,0b10011100)            #ODR 3.3 kHz, 2000 dps
+        #elf._write_u8(self._sensors.GYRO,LSM6DSL_CTRL2_G,0b10011100)            #ODR 3.3 kHz, 2000 dps
+        self._write_u8(self._sensors.GYRO,LSM6DSL_CTRL2_G,0b10010000)            #ODR 3.3 kHz,  250 dps
 
         #initialise the magnetometer
         self._write_u8(self._sensors.MAG,LIS3MDL_CTRL_REG1, 0b11011100)         # Temp sesnor enabled, High performance, ODR 80 Hz, FAST ODR disabled and Selft test disabled.
-        self._write_u8(self._sensors.MAG,LIS3MDL_CTRL_REG2, 0b00100000)         # +/- 8 gauss
+        #elf._write_u8(self._sensors.MAG,LIS3MDL_CTRL_REG2, 0b00100000)         # +/- 8 gauss
+        self._write_u8(self._sensors.MAG,LIS3MDL_CTRL_REG2, 0b00000000)         # +/- 4 gauss
         self._write_u8(self._sensors.MAG,LIS3MDL_CTRL_REG3, 0b00000000)         # Continuous-conversion mode
 
 
